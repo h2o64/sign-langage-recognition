@@ -20,3 +20,5 @@ As for the data, the outputs of the `New data - Data preparation` can be obtaine
 * `new_data_filtered_splitted_grouped_v3.zip` [here](https://drive.google.com/file/d/1JnRP7thN9_zwA3vbY3UDLn1KExHKaIJa/view?usp=sharing)
 
 The full data won't be available.
+
+A **proof of concept** with YOLO for live sign recognition is available on the [`yolo-detection`](https://github.com/h2o64/sign-language-recognition/tree/yolo-detection) branch (this is a fork from [`cansik/yolo-hand-detection`](https://github.com/cansik/yolo-hand-detection))
