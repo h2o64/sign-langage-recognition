@@ -55,7 +55,7 @@ print('Input shape = ', str(input_shape))
 print('is_mnist = ', str(is_mnist))
 print('is_color = ', str(is_color))
 print('groups = ', str(mapping_d.values()))
-if len(model.layers) > 5 and not is_mnist: # Resnet
+if len(model.layers) == 5 and not is_mnist: # Resnet
     preprocessing_f = tf.keras.applications.resnet50.preprocess_input
 elif not is_mnist: # First bad model
     preprocessing_f = lambda x : x / 255.
@@ -119,8 +119,8 @@ while rval:
         xmax = min(xmax, frame.shape[1])
         frame_cropped = frame[ymin:ymax, xmin:xmax]
 
-        #cv2.imwrite('tmp/image_B{}.png'.format(i), frame_cropped)
-        #i += 1
+        cv2.imwrite('tmp/image_B{}.png'.format(i), frame_cropped)
+        i += 1
 
         # Ensure frames are squares
         frame_cropped = preprocessing_f(frame_cropped[:min(frame_cropped.shape[:2]), :min(frame_cropped.shape[:2])])
@@ -149,7 +149,7 @@ while rval:
         # END HACK
         # draw a bounding box rectangle and label on the image
         color = (0, 255, 255)
-        cv2.rectangle(frame, (x, y), (x + w, y + h), color, 2)
+        cv2.rectangle(frame, (xmin, ymin), (xmax, ymax), color, 2)
         text = "%s (%s)" % (name, round(confidence, 2))
         cv2.putText(frame, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX,
                     0.5, color, 2)
